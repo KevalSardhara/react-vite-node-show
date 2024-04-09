@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "express.js",
+            "destination": "/api/v1/(.*)"
+        },
+        {
+            "source": "product-routes.js",
+            "destination": "/api/v1/products(.*)"
+        },
+        {
+            "source": "express.js",
+            "destination": "/(.*)"
+        }
+    ]
+}
