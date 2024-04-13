@@ -1,11 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <script src="/socket.io/socket.io.js">
+        console.log("--------------------------------");
+        const socket = io();
+        console.log("socket client side", socket.id);
+        socket.emit('msg', { name: 'connection herebyConnect' });
+    </script> -->
+
+    <script type="importmap">
+    {
+      "imports": {
+        "socket.io-client": "https://cdn.socket.io/4.7.5/socket.io.esm.min.js"
+      }
+    }
+  </script>
+
+    <script type="module">
+        import { io } from "socket.io-client";
+
+        const socket = io();
+        console.log("socket client side", socket.id);
+        socket.emit('msg', { name: 'connection herebyConnect' });
+    </script>
+    <!-- <script type="module">
+        import { io } from "https://cdn.socket.io/4.7.5/socket.io.esm.min.js";
+
+        const socket = io();
+        console.log("socket client side", socket.id);
+        socket.emit('msg', { name: 'connection herebyConnect' });
+    </script> -->
 </head>
+
 <body>
-    <h1>Ratting</h1>
+    <!-- axios use here and make to be the proper here -->
+    <!-- axios use for the API call and data fatch -->
+    <!-- <% for(let productList of productListAll ) {%>
+        <h1>name - <%= productList.name %>
+        </h1>
+        <h1>title - <%= productList.title %>
+        </h1>
+        <h1>price - <%= productList.price %>
+        </h1>
+        <h1>id - <%= productList._id %>
+        </h1>
+        <button type="button" onclick="btnClick('<%= productList._id %>')">btn</button>
+        <hr />
+        <% }%> -->
+        <h1>socket.min.io.js</h1>
 </body>
+
+<script>
+    // async function btnClick(id) {
+    //     console.log(id);
+
+    //     const myHeaders = new Headers();
+    //     myHeaders.append("Content-Type", "application/json");
+
+    //     const raw = JSON.stringify({
+    //         "id": id,
+    //     });
+
+    //     const requestOptions = {
+    //         method: "DELETE",
+    //         headers: myHeaders,
+    //         body: raw,
+    //         redirect: "follow"
+    //     };
+
+    //     await fetch("http://127.0.0.1:5000/api/v1/products/" + id, requestOptions)
+    //         .then((response) => response.json())
+    //         .then((result) => {
+    //             console.log(result);
+    //             refreshPage();
+    //         })
+    //         .catch((error) => console.error(error));
+    // }
+
+    // async function refreshPage() {
+    //     console.log('-----run-----');
+    //     await fetch("http://127.0.0.1:5000/api/v1/products/one")
+    //         .then((response) => response.json())
+    //         .then((result) => console.log("result"))
+    //         .catch((error) => console.error("error"));
+    // }
+
+
+</script>
+
+
+
 </html>

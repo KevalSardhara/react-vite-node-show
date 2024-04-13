@@ -1,12 +1,43 @@
 import fs from "fs";
 import bodyParser from "body-parser";
 import Product from "../models/products-model.js";
+import ejs from "ejs";
+import path from "path";
+
 
 
 // conver into a JSON object
-let fsFile = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
+// let fsFile = JSON.parse(fs.readFileSync('./data.json', 'utf-8'));
 
-console.log(Product);
+console.log(Product, "info");
+
+export const getProductRenderList = async (req, res) => {
+    try {
+        // const { id } = req.params;
+        // const productOne = await Product.findById({ _id: id });
+        const productOne = await Product.find();
+        console.log(productOne);
+        // res.send(productOne);
+        // res.json(productOne);
+
+        // ejs.render(path.join(path.resolve(), '../pages/index.ejs'), { productList: productOne });
+        // ejs.render(path.join(path.resolve(), '../pages/index.ejs'), { productList: productOne });
+
+        // res.renderFile(path.join(path.resolve(), '../pages/index.ejs'), { productList: productOne }, options, function (err, str) {
+        //     // res.send(str);
+        //     console.log(str);
+        // });
+        console.log(path.resolve()); // root directry path given here
+        return res.render(path.join(path.resolve(), './pages/index.ejs'), { productListAll: productOne });
+
+    } catch (error) {
+        return res.status(404).json({
+            success: false,
+            message: error.message,
+        });
+    }
+    // res.render("index", productList);
+}
 
 export const getAllProduct = async (req, res) => {
     // res.products = fsFile;
@@ -138,7 +169,7 @@ export const deleteProduct = async (req, res) => {
         // const temp = fsFile.find(p => p.id === (+req.params.id));
         // fsFile.splice((+req.params.id) - 1, 1);
         // const deleteProduct = Product.deleteOne(Product.find(id)._id);
-        const deleteProduct = await Product.findByIdAndDelete({_id : id});
+        const deleteProduct = await Product.findByIdAndDelete({ _id: id });
 
         return res.status(201).json({
             successTrue: true,
