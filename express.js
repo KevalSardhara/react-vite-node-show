@@ -107,6 +107,8 @@ function connectSocket() {
 }
 connectSocket();
 
+
+// add one index.html file in the public file as a static
 app.use(express.static(path.join(path.resolve(), process.env.PUBLIC_DIR))); // ./dist/index.html = "/"
 
 // work as comman api api/v1/* (and so on here)
